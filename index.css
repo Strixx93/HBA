@@ -91,8 +91,8 @@ html, body {
     position: absolute;
     pointer-events: none;
     z-index: 100;
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
-    filter: drop-shadow(0 4px 8px rgba(255, 20, 147, 0.3));
+    font-size: clamp(2.5rem, 6vw, 4.2rem); /* Noticeably larger hearts! */
+    filter: drop-shadow(0 6px 12px rgba(255, 20, 147, 0.4));
     animation: floatHeart 1.4s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
 }
 
@@ -105,7 +105,7 @@ html, body {
         opacity: 1;
     }
     100% {
-        transform: translate(var(--tx), var(--ty)) scale(1.4) rotate(var(--rot));
+        transform: translate(var(--tx), var(--ty)) scale(1.9) rotate(var(--rot)); /* Upgraded final scale */
         opacity: 0;
     }
 }
