@@ -146,6 +146,24 @@ function handleInteraction(e) {
     if (e.target === heatherImage) {
         spawnHearts(clientX, clientY);
     }
+
+    // If any of the bottom Maria images are clicked, spin them around the Z-axis!
+    const maria1 = document.getElementById('maria1-image');
+    const maria2 = document.getElementById('maria2-image');
+    
+    if (e.target === maria1 || e.target === maria2) {
+        const targetImage = e.target;
+        
+        // Prevent double triggers if already spinning
+        if (!targetImage.classList.contains('spinning')) {
+            targetImage.classList.add('spinning');
+            
+            // Remove the class after the animation completes so it can be re-triggered
+            setTimeout(() => {
+                targetImage.classList.remove('spinning');
+            }, 900); // matches the 0.9s duration in CSS
+        }
+    }
 }
 
 // Event Listeners for both desktop and mobile

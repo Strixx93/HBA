@@ -165,8 +165,24 @@ html, body {
     max-width: 28%;
     max-height: 35vh;
     object-fit: contain;
-    pointer-events: none; /* Let background clicks pass through */
+    pointer-events: auto; /* Clickable to trigger spin! */
+    cursor: pointer;
     filter: drop-shadow(0 12px 24px rgba(255, 20, 147, 0.35));
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Z-axis 360 degree spin class triggered via JS on click */
+.spinning {
+    animation: zSpin 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes zSpin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /* Scale down corner images slightly on mobile viewports for clean spacing */
