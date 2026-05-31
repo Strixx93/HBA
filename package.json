@@ -1,0 +1,24 @@
+{
+  "name": "pink-app",
+  "version": "1.0.0",
+  "description": "A gorgeous minimalist pink interactive web application.",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "pink",
+    "aesthetic",
+    "web-app"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^5.0.0"
+  },
+  "dependencies": {
+    "canvas-confetti": "^1.9.4"
+  }
+}
