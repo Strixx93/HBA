@@ -148,3 +148,35 @@ html, body {
         max-height: 25vh;
     }
 }
+
+/* Center top container for Dr. House at the very top edge */
+.top-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 10;
+    pointer-events: none; /* Let background clicks pass through */
+}
+
+/* Upside down styling for Dr. House image hanging from the top */
+.house-image {
+    max-width: 160px;
+    height: auto;
+    object-fit: contain;
+    transform: rotate(180deg); /* Fully upside down! */
+    pointer-events: none; /* Let background clicks pass through */
+    border-bottom-left-radius: 16px; /* Physical bottom corners because of rotation */
+    border-bottom-right-radius: 16px;
+    filter: drop-shadow(0 -10px 20px rgba(0, 0, 0, 0.4));
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+@media (max-width: 480px) {
+    .house-image {
+        max-width: 120px;
+    }
+}
