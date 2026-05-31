@@ -43,6 +43,47 @@ function triggerConfetti(x = 0.5, y = 0.5, particleCount = 40) {
     });
 }
 
+// Function to spawn a beautiful burst of fountaining hearts centered on the clicked point
+function spawnHearts(clientX, clientY) {
+    const heartCount = 14;
+    const container = document.querySelector('.centered-content');
+    if (!container) return;
+
+    // Calculate coordinates relative to the centered-content container
+    const rect = container.getBoundingClientRect();
+    const relativeX = clientX - rect.left;
+    const relativeY = clientY - rect.top;
+
+    for (let i = 0; i < heartCount; i++) {
+        const heart = document.createElement('span');
+        heart.className = 'floating-heart';
+        heart.textContent = '❤️';
+        
+        // Start heart exactly at client click coordinates
+        heart.style.left = `${relativeX}px`;
+        heart.style.top = `${relativeY}px`;
+        
+        // Random radial fountaining animations
+        const angle = Math.random() * Math.PI * 2; // Random 360 degree direction
+        const distance = 80 + Math.random() * 160; // Random spread radius
+        
+        const tx = Math.cos(angle) * distance;
+        const ty = Math.sin(angle) * distance - 80; // Rise upward slightly
+        const rot = (Math.random() - 0.5) * 140; // Random rotation angle
+        
+        heart.style.setProperty('--tx', `${tx}px`);
+        heart.style.setProperty('--ty', `${ty}px`);
+        heart.style.setProperty('--rot', `${rot}deg`);
+        
+        container.appendChild(heart);
+        
+        // Clean up DOM after animation completes
+        setTimeout(() => {
+            heart.remove();
+        }, 1400);
+    }
+}
+
 // Function to run a gorgeous intro dual-stream confetti cascade on load
 function triggerIntroConfetti() {
     const duration = 2 * 1000;
@@ -99,6 +140,12 @@ function handleInteraction(e) {
 
     // Fire confetti at interactive coordinate point
     triggerConfetti(x, y);
+
+    // If center image (heather) is clicked, launch heart fountaining effect!
+    const heatherImage = document.getElementById('heather-image');
+    if (e.target === heatherImage) {
+        spawnHearts(clientX, clientY);
+    }
 }
 
 // Event Listeners for both desktop and mobile
