@@ -113,3 +113,38 @@ html, body {
     top: 40%;
     right: 20%;
 }
+
+/* Bottom container positioned symmetrically at the bottom corners */
+.bottom-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0 1.5rem;
+    box-sizing: border-box;
+    z-index: 10;
+    pointer-events: none; /* Lets background clicks pass through */
+}
+
+/* Symmetrical cutout styling for Maria images */
+.maria-image {
+    max-width: 28%;
+    max-height: 35vh;
+    object-fit: contain;
+    pointer-events: none; /* Let background clicks pass through */
+    filter: drop-shadow(0 12px 24px rgba(255, 20, 147, 0.35));
+}
+
+/* Scale down corner images slightly on mobile viewports for clean spacing */
+@media (max-width: 480px) {
+    .bottom-container {
+        padding: 0 0.5rem;
+    }
+    .maria-image {
+        max-width: 32%;
+        max-height: 25vh;
+    }
+}
