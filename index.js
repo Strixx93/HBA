@@ -164,6 +164,19 @@ function handleInteraction(e) {
             }, 900); // matches the 0.9s duration in CSS
         }
     }
+
+    // If the top House image is clicked, make him do a bouncier jumpy spring animation!
+    const houseImage = document.getElementById('house-image');
+    if (e.target === houseImage) {
+        if (!houseImage.classList.contains('jumpy')) {
+            houseImage.classList.add('jumpy');
+            
+            // Remove the class after the animation completes so it can be re-triggered
+            setTimeout(() => {
+                houseImage.classList.remove('jumpy');
+            }, 650); // matches the 0.65s duration in CSS
+        }
+    }
 }
 
 // Event Listeners for both desktop and mobile

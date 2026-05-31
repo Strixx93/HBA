@@ -215,8 +215,30 @@ html, body {
     height: auto;
     object-fit: contain;
     transform: rotate(180deg); /* Fully upside down! */
-    pointer-events: none; /* Let background clicks pass through */
+    pointer-events: auto; /* Clickable to trigger jump! */
+    cursor: pointer;
     filter: drop-shadow(0 -12px 24px rgba(0, 0, 0, 0.35));
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Jumpy spring animation class for Dr. House */
+.jumpy {
+    animation: topJump 0.65s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes topJump {
+    0%, 100% {
+        transform: rotate(180deg) translateY(0);
+    }
+    30% {
+        transform: rotate(180deg) translateY(-90px); /* drops/jumps down into view */
+    }
+    60% {
+        transform: rotate(180deg) translateY(-40px); /* bounces slightly */
+    }
+    80% {
+        transform: rotate(180deg) translateY(-70px); /* bounces slightly */
+    }
 }
 
 @media (max-width: 480px) {
